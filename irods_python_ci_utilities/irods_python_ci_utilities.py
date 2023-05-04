@@ -104,6 +104,8 @@ def install_os_packages(packages):
 def install_os_packages_from_files_apt(files):
     args = ['sudo', 'apt', 'install', '-fy'] + list(files)
     if len(files) > 0:
+        with open('/tmp/dan-debug','a') as f:
+             f.write(repr(args)+"\n")
         subprocess_get_output(args, check_rc=True)
 
 def install_os_packages_from_files_dnf(files):
